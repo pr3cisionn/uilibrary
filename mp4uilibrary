@@ -366,3 +366,178 @@ function Library:CreateWindow(name)
 		end) 
 
 	end
+
+	function Functions:CreateSlider(name, minvalue, maxvalue, callback)
+		callback = callback or function() end
+		name = (name) or "Slider"
+		maxvalue = maxvalue or 150
+		minvalue = minvalue or 16
+		local c = MainFolder.Slider.Frame:Clone()
+		c.Parent = MainList
+		c.Visible = true
+		c.ALabel.Text = name.." - "..minvalue
+		local btn = c.CButton
+		local slide = btn.Slide
+
+		local TweenService = game:GetService("TweenService")
+		local Button = c.ALabel
+		local Goal = {TextColor3 = Color3.fromRGB(200, 200, 200)}
+		local Goal2 = {TextColor3 = Color3.fromRGB(255, 255, 255)}
+		local Tween1 = TweenService:Create(Button, TweenInfo.new(0.2), Goal2)
+		local Tween2 = TweenService:Create(Button, TweenInfo.new(0.2), Goal)
+		
+		c.MouseEnter:Connect(function()
+			Tween1:Play()
+			Tween2:Cancel()
+		end)
+		c.MouseLeave:Connect(function()
+			Tween2:Play()
+			Tween1:Cancel()
+		end) 
+
+		local mouse = game.Players.LocalPlayer:GetMouse()
+		local uis = game:GetService("UserInputService")
+		local Value;
+		btn.MouseButton1Down:Connect(function()
+			Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 300) * slide.AbsoluteSize.X) + tonumber(minvalue)) or 0
+			pcall(function()
+				callback(Value)
+			end)
+			slide.Size = UDim2.new(0, math.clamp(mouse.X - slide.AbsolutePosition.X, 0, 300), 0, 20)
+			moveconnection = mouse.Move:Connect(function()
+				c.ALabel.Text = (name.." - "..Value)
+				Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 300) * slide.AbsoluteSize.X) + tonumber(minvalue))
+				pcall(function()
+					callback(Value)
+				end)
+				slide.Size = UDim2.new(0, math.clamp(mouse.X - slide.AbsolutePosition.X, 0, 300), 0, 20)
+			end)
+			releaseconnection = uis.InputEnded:Connect(function(Mouse)
+				c.ALabel.Text = (name.." - "..Value)
+				if Mouse.UserInputType == Enum.UserInputType.MouseButton1 then
+					Value = math.floor((((tonumber(maxvalue) - tonumber(minvalue)) / 300) * slide.AbsoluteSize.X) + tonumber(minvalue))
+					pcall(function()
+						callback(Value)
+					end)
+					slide.Size = UDim2.new(0, math.clamp(mouse.X - slide.AbsolutePosition.X, 0, 300), 0, 20)
+					moveconnection:Disconnect()
+					releaseconnection:Disconnect()
+					c.ALabel.Text = (name.." - "..Value)
+				end
+			end)
+		end)
+	end
+
+	function Functions:CreateButton(name, callback)
+		name = name or "Button"
+		local c = MainFolder.Button.Frame:Clone()
+		c.Parent = MainList
+		c.Visible = true
+		callback = callback or function() end
+		c.AButton.BLabel.Text = name
+
+		local TweenService = game:GetService("TweenService")
+		local Button = c.AButton.BLabel
+		local Goal = {TextColor3 = Color3.fromRGB(200, 200, 200)}
+		local Goal2 = {TextColor3 = Color3.fromRGB(255, 255, 255)}
+		local Tween1 = TweenService:Create(Button, TweenInfo.new(0.2), Goal2)
+		local Tween2 = TweenService:Create(Button, TweenInfo.new(0.4), Goal)
+
+		debounce = false
+		c.AButton.MouseButton1Click:Connect(function()
+			if debounce then return end
+			debounce = true
+				callback()
+				wait(0.2)
+			debounce = false
+		end)
+		c.MouseEnter:Connect(function()
+			Tween1:Play()
+			Tween2:Cancel()
+		end)
+		c.MouseLeave:Connect(function()
+			Tween2:Play()
+			Tween1:Cancel()
+		end) 
+		
+
+	end
+
+
+	function Functions:CreateToggle(name, callback)
+
+		name = name or "Toggle"
+		local c = MainFolder.Toggle.Frame:Clone()
+		c.Parent = MainList
+		c.Visible = true
+		c.BLabel.Text = name
+		callback = callback or function() end
+		local b = c.AButton
+		b.TextColor3 = Color3.fromRGB(100,100,100)
+		local toggled = false
+		local TweenService = game:GetService("TweenService")
+		local Button = b
+		local Goal = {TextColor3 = Color3.fromRGB(200, 200, 200)}
+		local Goal2 = {TextColor3 = Color3.fromRGB(255, 255, 255)}
+		local Tween1 = TweenService:Create(Button, TweenInfo.new(0.2), Goal2)
+		local Tween2 = TweenService:Create(Button, TweenInfo.new(0.2), Goal)
+		local Button2 = c.BLabel
+		local Tween3 = TweenService:Create(Button2, TweenInfo.new(0.2), Goal2)
+		local Tween4 = TweenService:Create(Button2, TweenInfo.new(0.2), Goal)
+
+		local debounce = false
+		
+		
+		
+		c.MouseEnter:Connect(function()
+			Tween3:Play()
+			Tween4:Cancel()
+		end)
+		c.MouseLeave:Connect(function()
+			Tween4:Play()
+			Tween3:Cancel()
+		end) 
+
+		b.MouseButton1Click:Connect(function()
+			if debounce then return end
+			debounce = true
+			if toggled then
+				toggled = false
+				pcall(callback, toggled)
+				Tween2:Play()
+			else
+				toggled = true
+				pcall(callback, toggled)
+				Tween1:Play()
+			end
+			wait(0.21)
+			debounce = false
+		end)
+	end
+
+	function Functions:CreateTextbox(name, callback)
+		callback = callback or function() end
+		name = name or "Textbox"
+		local c = MainFolder.Textbox.Frame:Clone()
+		c.Parent = MainFrame.Main.MainList
+		c.Visible = true
+		c.TextBox.PlaceholderText = name
+		
+		local TweenService = game:GetService("TweenService")
+		local Button = c.TextBox
+		local Goal = {TextColor3 = Color3.fromRGB(200, 200, 200) , PlaceholderColor3 = Color3.fromRGB(200, 200, 200)}
+		local Goal2 = {TextColor3 = Color3.fromRGB(255, 255, 255), PlaceholderColor3 = Color3.fromRGB(255, 255, 255)}
+		local Tween1 = TweenService:Create(Button, TweenInfo.new(0.2), Goal2)
+		local Tween2 = TweenService:Create(Button, TweenInfo.new(0.2), Goal)
+		c.MouseEnter:Connect(function()
+			Tween1:Play()
+			Tween2:Cancel()
+		end)
+		c.MouseLeave:Connect(function()
+			Tween2:Play()
+			Tween1:Cancel()
+		end) 
+	end
+
+	return Functions
+end
