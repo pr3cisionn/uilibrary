@@ -1,7 +1,5 @@
 local Library = {}
 
-if game.CoreGui:FindFirstChild("mp4UILibrary") then game.CoreGui.mp4UILibrary:Destroy() end
-
 function Library:CreateWindow(name)
 	local mp4UILibrary = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
