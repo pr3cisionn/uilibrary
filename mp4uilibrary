@@ -537,6 +537,16 @@ function Library:CreateWindow(name)
 		local Goal2 = {TextColor3 = Color3.fromRGB(255, 255, 255), PlaceholderColor3 = Color3.fromRGB(255, 255, 255)}
 		local Tween1 = TweenService:Create(Button, TweenInfo.new(0.2), Goal2)
 		local Tween2 = TweenService:Create(Button, TweenInfo.new(0.2), Goal)
+		
+		focused = false
+		
+		c.TextBox.Focused:Connect(function()
+		    focused = true
+		end)
+		c.TextBox.FocusLost:Connect(function()
+		    focused = false
+		end)
+		if focused then
 		c.MouseEnter:Connect(function()
 			Tween1:Play()
 			Tween2:Cancel()
@@ -544,7 +554,8 @@ function Library:CreateWindow(name)
 		c.MouseLeave:Connect(function()
 			Tween2:Play()
 			Tween1:Cancel()
-		end) 
+		end)
+		end
 	end
 
 	return Functions
