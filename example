@@ -1,0 +1,24 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/cusorr/uilibrary/main/mp4uilibrary", true))()
+
+local main = Library:CreateWindow("Example")
+
+main:CreateToggle("Toggle", function(state)
+	print("You just toggled to", state)
+end)
+
+main:CreateLabel("A label")
+
+main:CreateButton("Button, function()
+	print("You just pressed a button")
+end)
+
+main:CreateSlider("Slider", 16, 250, function(s)
+	print("The slider just slid to ", s)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+main:CreateTextbox("Textbox", function(text)
+print(text)
+end)
+
+-- More Features added soon
