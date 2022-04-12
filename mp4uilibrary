@@ -1,0 +1,368 @@
+local Library = {}
+
+function Library:CreateWindow(name)
+	local mp4UILibrary = Instance.new("ScreenGui")
+	local MainFrame = Instance.new("Frame")
+	local Title = Instance.new("TextLabel")
+	local UIGradient = Instance.new("UIGradient")
+	local Close = Instance.new("TextButton")
+	local Topbar = Instance.new("Frame")
+	local Topbar2 = Instance.new("Frame")
+	local UIGradient_2 = Instance.new("UIGradient")
+	local Main = Instance.new("Frame")
+	local MainList = Instance.new("ScrollingFrame")
+	local UIListLayout = Instance.new("UIListLayout")
+	local MainFolder = Instance.new("Folder")
+	local Toggle = Instance.new("Folder")
+	local Frame = Instance.new("Frame")
+	local UIListLayout_2 = Instance.new("UIListLayout")
+	local BLabel = Instance.new("TextLabel")
+	local AButton = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+	local Slider = Instance.new("Folder")
+	local Frame_2 = Instance.new("Frame")
+	local UIListLayout_3 = Instance.new("UIListLayout")
+	local CButton = Instance.new("TextButton")
+	local UICorner_2 = Instance.new("UICorner")
+	local Slide = Instance.new("Frame")
+	local UICorner_3 = Instance.new("UICorner")
+	local UIGradient_3 = Instance.new("UIGradient")
+	local ALabel = Instance.new("TextLabel")
+	local Button = Instance.new("Folder")
+	local Frame_3 = Instance.new("Frame")
+	local UIListLayout_4 = Instance.new("UIListLayout")
+	local AButton_2 = Instance.new("TextButton")
+	local UICorner_4 = Instance.new("UICorner")
+	local BLabel_2 = Instance.new("TextLabel")
+	local Label = Instance.new("Folder")
+	local Frame_4 = Instance.new("Frame")
+	local UIListLayout_5 = Instance.new("UIListLayout")
+	local BLabel_3 = Instance.new("TextLabel")
+	local Textbox = Instance.new("Folder")
+	local Frame_5 = Instance.new("Frame")
+	local UIListLayout_6 = Instance.new("UIListLayout")
+	local TextBox = Instance.new("TextBox")
+	local UICorner_5 = Instance.new("UICorner")
+
+	--Properties:
+
+	mp4UILibrary.Name = "mp4UILibrary"
+	mp4UILibrary.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	mp4UILibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	mp4UILibrary.ResetOnSpawn = false
+
+	MainFrame.Name = "MainFrame"
+	MainFrame.Parent = mp4UILibrary
+	MainFrame.Active = true
+	MainFrame.Draggable = true
+	MainFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+	MainFrame.BorderColor3 = Color3.fromRGB(45, 45, 45)
+	MainFrame.BorderSizePixel = 5
+	MainFrame.Position = UDim2.new(0.293174088, 0, 0.259000003, 0)
+	MainFrame.Size = UDim2.new(0, 370, 0, 429)
+
+	name = name or "Title"
+
+	Title.Name = "Title"
+	Title.Parent = MainFrame
+	Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Title.BackgroundTransparency = 1.000
+	Title.Position = UDim2.new(0.0216216203, 0, 0, 0)
+	Title.Size = UDim2.new(0, 311, 0, 22)
+	Title.Font = Enum.Font.GothamSemibold
+	Title.Text = name
+	Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextScaled = true
+	Title.TextSize = 14.000
+	Title.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+	Title.TextWrapped = true
+	Title.TextXAlignment = Enum.TextXAlignment.Left
+
+	UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(0.60, Color3.fromRGB(249, 249, 249)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(158, 158, 158))}
+	UIGradient.Rotation = 5
+	UIGradient.Parent = Title
+
+	Close.Name = "Close"
+	Close.Parent = MainFrame
+	Close.BackgroundColor3 = Color3.fromRGB(193, 193, 193)
+	Close.BackgroundTransparency = 1.000
+	Close.Position = UDim2.new(0.940540433, 0, 0, 0)
+	Close.Size = UDim2.new(0, 22, 0, 22)
+	Close.Font = Enum.Font.GothamBlack
+	Close.Text = "X"
+	Close.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Close.TextScaled = true
+	Close.TextSize = 14.000
+	Close.TextWrapped = true
+	Close.MouseButton1Click:Connect(function()
+		local X1 = MainFrame.Position.X.Scale
+		local X2 = MainFrame.Position.X.Offset
+		MainFrame.Draggable = false
+		MainFrame:TweenPosition(UDim2.new(X1,X2,1.25, 0), 'Out', 'Back', 1)
+		wait(1.1)
+		mp4UILibrary:Destroy()
+	end)
+
+	Topbar.Name = "Topbar"
+	Topbar.Parent = MainFrame
+	Topbar.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	Topbar.BorderSizePixel = 0
+	Topbar.Position = UDim2.new(0, 0, 0.051282052, 0)
+	Topbar.Size = UDim2.new(0, 370, 0, 12)
+
+	Topbar2.Name = "Topbar2"
+	Topbar2.Parent = MainFrame
+	Topbar2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Topbar2.BorderSizePixel = 0
+	Topbar2.Position = UDim2.new(0, 0, 0.0582750589, 0)
+	Topbar2.Size = UDim2.new(0, 370, 0, 6)
+
+	UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(2, 196, 255)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(255, 78, 238)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(226, 255, 93))}
+	UIGradient_2.Parent = Topbar2
+
+	Main.Name = "Main"
+	Main.Parent = MainFrame
+	Main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Main.BackgroundTransparency = 1.000
+	Main.Position = UDim2.new(0, 0, 0.0955710933, 0)
+	Main.Size = UDim2.new(0, 369, 0, 388)
+
+	MainList.Name = "MainList"
+	MainList.Parent = Main
+	MainList.Active = true
+	MainList.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	MainList.BackgroundTransparency = 1.000
+	MainList.Position = UDim2.new(0.0410000011, 0, -0.00300000003, 0)
+	MainList.Size = UDim2.new(0, 354, 0, 388)
+	MainList.ScrollBarThickness = 0
+
+	UIListLayout.Parent = MainList
+	UIListLayout.Padding = UDim.new(0, 1)
+
+	MainFolder.Name = "MainFolder"
+	MainFolder.Parent = mp4UILibrary
+
+	Toggle.Name = "Toggle"
+	Toggle.Parent = MainFolder
+
+	Frame.Parent = Toggle
+	Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame.BackgroundTransparency = 1.000
+	Frame.Size = UDim2.new(0, 300, 0, 40)
+	Frame.Visible = false
+
+	UIListLayout_2.Parent = Frame
+	UIListLayout_2.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayout_2.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout_2.Padding = UDim.new(0, 7)
+
+	BLabel.Name = "BLabel"
+	BLabel.Parent = Frame
+	BLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BLabel.BackgroundTransparency = 1.000
+	BLabel.Position = UDim2.new(0.156666666, 0, 0, 0)
+	BLabel.Size = UDim2.new(0, 244, 0, 30)
+	BLabel.Font = Enum.Font.Gotham
+	BLabel.Text = "Function"
+	BLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+	BLabel.TextScaled = true
+	BLabel.TextSize = 14.000
+	BLabel.TextWrapped = true
+	BLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	AButton.Name = "AButton"
+	AButton.Parent = Frame
+	AButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	AButton.Position = UDim2.new(0, 0, 0.121212125, 0)
+	AButton.Size = UDim2.new(0, 30, 0, 30)
+	AButton.AutoButtonColor = false
+	AButton.Font = Enum.Font.GothamSemibold
+	AButton.Text = "X"
+	AButton.TextColor3 = Color3.fromRGB(200, 200, 200)
+	AButton.TextScaled = true
+	AButton.TextSize = 14.000
+	AButton.TextWrapped = true
+
+	UICorner.CornerRadius = UDim.new(0, 4)
+	UICorner.Parent = AButton
+
+	Slider.Name = "Slider"
+	Slider.Parent = MainFolder
+
+	Frame_2.Parent = Slider
+	Frame_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame_2.BackgroundTransparency = 1.000
+	Frame_2.Size = UDim2.new(0, 300, 0, 60)
+	Frame_2.Visible = false
+
+	UIListLayout_3.Parent = Frame_2
+	UIListLayout_3.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout_3.Padding = UDim.new(0, 1)
+
+	CButton.Name = "CButton"
+	CButton.Parent = Frame_2
+	CButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	CButton.Position = UDim2.new(0, 0, 0.639999986, 0)
+	CButton.Size = UDim2.new(0, 300, 0, 20)
+	CButton.Font = Enum.Font.GothamSemibold
+	CButton.Text = ""
+	CButton.TextColor3 = Color3.fromRGB(2, 196, 255)
+	CButton.TextScaled = true
+	CButton.TextSize = 14.000
+	CButton.TextWrapped = true
+	CButton.AutoButtonColor = false
+
+	UICorner_2.CornerRadius = UDim.new(0, 4)
+	UICorner_2.Parent = CButton
+
+	Slide.Name = "Slide"
+	Slide.Parent = CButton
+	Slide.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Slide.Size = UDim2.new(0, 0, 0, 20)
+
+	UICorner_3.CornerRadius = UDim.new(0, 4)
+	UICorner_3.Parent = Slide
+
+	UIGradient_3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(2, 196, 255)), ColorSequenceKeypoint.new(0.40, Color3.fromRGB(165, 119, 244)), ColorSequenceKeypoint.new(0.63, Color3.fromRGB(252, 79, 236)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 78, 236))}
+	UIGradient_3.Rotation = 5
+	UIGradient_3.Parent = Slide
+
+	ALabel.Name = "ALabel"
+	ALabel.Parent = Frame_2
+	ALabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	ALabel.BackgroundTransparency = 1.000
+	ALabel.Position = UDim2.new(0, 0, 0.209999993, 0)
+	ALabel.Size = UDim2.new(0, 95, 0, 31)
+	ALabel.Font = Enum.Font.Gotham
+	ALabel.Text = "Slider - Value"
+	ALabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+	ALabel.TextScaled = true
+	ALabel.TextSize = 14.000
+	ALabel.TextWrapped = true
+	ALabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	Button.Name = "Button"
+	Button.Parent = MainFolder
+
+	Frame_3.Parent = Button
+	Frame_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame_3.BackgroundTransparency = 1.000
+	Frame_3.Size = UDim2.new(0, 300, 0, 40)
+	Frame_3.Visible = false
+
+	UIListLayout_4.Parent = Frame_3
+	UIListLayout_4.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayout_4.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout_4.Padding = UDim.new(0, 7)
+
+	AButton_2.Name = "AButton"
+	AButton_2.Parent = Frame_3
+	AButton_2.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	AButton_2.Position = UDim2.new(0, 0, 0.125, 0)
+	AButton_2.Size = UDim2.new(0, 300, 0, 30)
+	AButton_2.AutoButtonColor = false
+	AButton_2.Font = Enum.Font.GothamSemibold
+	AButton_2.Text = " "
+	AButton_2.TextColor3 = Color3.fromRGB(2, 196, 255)
+	AButton_2.TextScaled = true
+	AButton_2.TextSize = 14.000
+	AButton_2.TextWrapped = true
+
+	UICorner_4.CornerRadius = UDim.new(0, 4)
+	UICorner_4.Parent = AButton_2
+
+	BLabel_2.Name = "BLabel"
+	BLabel_2.Parent = AButton_2
+	BLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BLabel_2.BackgroundTransparency = 1.000
+	BLabel_2.Position = UDim2.new(0, 0, -0.00833334029, 0)
+	BLabel_2.Size = UDim2.new(0, 300, 0, 30)
+	BLabel_2.Font = Enum.Font.Gotham
+	BLabel_2.Text = "Button"
+	BLabel_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+	BLabel_2.TextScaled = true
+	BLabel_2.TextSize = 14.000
+	BLabel_2.TextWrapped = true
+
+	Label.Name = "Label"
+	Label.Parent = MainFolder
+
+	Frame_4.Parent = Label
+	Frame_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame_4.BackgroundTransparency = 1.000
+	Frame_4.Size = UDim2.new(0, 300, 0, 40)
+	Frame_4.Visible = false
+
+	UIListLayout_5.Parent = Frame_4
+	UIListLayout_5.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayout_5.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout_5.Padding = UDim.new(0, 7)
+
+	BLabel_3.Name = "BLabel"
+	BLabel_3.Parent = Frame_4
+	BLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BLabel_3.BackgroundTransparency = 1.000
+	BLabel_3.Position = UDim2.new(0, 0, 0.125, 0)
+	BLabel_3.Size = UDim2.new(0, 300, 0, 30)
+	BLabel_3.Font = Enum.Font.Gotham
+	BLabel_3.TextColor3 = Color3.fromRGB(200, 200, 200)
+	BLabel_3.TextScaled = true
+	BLabel_3.TextSize = 14.000
+	BLabel_3.TextWrapped = true
+
+	Textbox.Name = "Textbox"
+	Textbox.Parent = MainFolder
+
+	Frame_5.Parent = Textbox
+	Frame_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Frame_5.BackgroundTransparency = 1.000
+	Frame_5.Size = UDim2.new(0, 300, 0, 45)
+	Frame_5.Visible = false
+
+	UIListLayout_6.Parent = Frame_5
+	UIListLayout_6.FillDirection = Enum.FillDirection.Horizontal
+	UIListLayout_6.VerticalAlignment = Enum.VerticalAlignment.Center
+	UIListLayout_6.Padding = UDim.new(0, 7)
+
+	TextBox.Parent = Frame_5
+	TextBox.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+	TextBox.Size = UDim2.new(0, 300, 0, 35)
+	TextBox.ClearTextOnFocus = false
+	TextBox.Font = Enum.Font.Gotham
+	TextBox.PlaceholderColor3 = Color3.fromRGB(200, 200, 200)
+	TextBox.PlaceholderText = "Input"
+	TextBox.Text = ""
+	TextBox.TextColor3 = Color3.fromRGB(200, 200, 200)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 30.000
+	TextBox.TextWrapped = true
+
+	UICorner_5.CornerRadius = UDim.new(0, 4)
+	UICorner_5.Parent = TextBox
+
+	local Functions = {}
+
+	function Functions:CreateLabel(name)
+
+		name = name or "Label"
+		local c = MainFolder.Label.Frame:Clone()
+		c.Parent = MainList
+		c.Visible = true
+		c.BLabel.Text = name
+		local TweenService = game:GetService("TweenService")
+		local Button = c.BLabel
+		local Goal = {TextColor3 = Color3.fromRGB(200, 200, 200)}
+		local Goal2 = {TextColor3 = Color3.fromRGB(255, 255, 255)}
+		local Tween1 = TweenService:Create(Button, TweenInfo.new(0.2), Goal2)
+		local Tween2 = TweenService:Create(Button, TweenInfo.new(0.2), Goal)
+		
+		c.MouseEnter:Connect(function()
+			Tween1:Play()
+			Tween2:Cancel()
+		end)
+		c.MouseLeave:Connect(function()
+			Tween2:Play()
+			Tween1:Cancel()
+		end) 
+
+	end
