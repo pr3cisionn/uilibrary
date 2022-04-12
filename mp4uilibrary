@@ -522,9 +522,17 @@ function Library:CreateWindow(name)
 		c.Parent = MainFrame.Main.MainList
 		c.Visible = true
 		c.TextBox.PlaceholderText = name
-		
+		focused = false
 		local uis = game:GetService("UserInputService")
 	
+        c.TextBox.Focus:Connect(function()
+            focused = true
+        end)
+
+        c.TextBox.FocusLost:Connect(function()
+            focused = false
+        end)
+
 		if focused then
 		uis.InputBegan:Connect(function(i)
 			if i.KeyCode == Enum.KeyCode.Return then
