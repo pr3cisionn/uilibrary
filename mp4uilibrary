@@ -525,7 +525,7 @@ function Library:CreateWindow(name)
 		focused = false
 		local uis = game:GetService("UserInputService")
 	
-        c.TextBox.Focus:Connect(function()
+        c.TextBox.Focused:Connect(function()
             focused = true
         end)
 
