@@ -549,3 +549,4 @@ function Library:CreateWindow(name)
 
 	return Functions
 end
+return Library
