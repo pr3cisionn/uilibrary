@@ -542,9 +542,11 @@ function Library:CreateWindow(name)
 		
 		c.TextBox.Focused:Connect(function()
 		    focused = true
+		    print(focused)
 		end)
 		c.TextBox.FocusLost:Connect(function()
 		    focused = false
+		    print(focused)
 		end)
 		if focused then
 		c.MouseEnter:Connect(function()
