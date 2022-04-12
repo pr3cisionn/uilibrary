@@ -523,6 +523,14 @@ function Library:CreateWindow(name)
 		c.Visible = true
 		c.TextBox.PlaceholderText = name
 		
+		local uis = game:GetService("UserInputService")
+	
+		
+		uis.InputBegan:Connect(function(i)
+			if i.KeyCode == Enum.KeyCode.Return then
+				pcall(callback, c.TextBox.Text)
+			end
+		end)
 		local TweenService = game:GetService("TweenService")
 		local Button = c.TextBox
 		local Goal = {TextColor3 = Color3.fromRGB(200, 200, 200) , PlaceholderColor3 = Color3.fromRGB(200, 200, 200)}
