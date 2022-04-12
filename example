@@ -8,7 +8,7 @@ end)
 
 main:CreateLabel("A label")
 
-main:CreateButton("Button, function()
+main:CreateButton("Button", function()
 	print("You just pressed a button")
 end)
 
