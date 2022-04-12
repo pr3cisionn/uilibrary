@@ -524,8 +524,19 @@ function Library:CreateWindow(name)
 		c.TextBox.PlaceholderText = name
 		
 		local uis = game:GetService("UserInputService")
-	
 		
+			focused = false
+		
+		c.TextBox.Focused:Connect(function()
+		    focused = true
+		    print(focused)
+		end)
+		c.TextBox.FocusLost:Connect(function()
+		    focused = false
+		    print(focused)
+		end)
+		
+		if focused then
 		uis.InputBegan:Connect(function(i)
 			if i.KeyCode == Enum.KeyCode.Return then
 				pcall(callback, c.TextBox.Text)
@@ -538,17 +549,7 @@ function Library:CreateWindow(name)
 		local Tween1 = TweenService:Create(Button, TweenInfo.new(0.2), Goal2)
 		local Tween2 = TweenService:Create(Button, TweenInfo.new(0.2), Goal)
 		
-		focused = false
 		
-		c.TextBox.Focused:Connect(function()
-		    focused = true
-		    print(focused)
-		end)
-		c.TextBox.FocusLost:Connect(function()
-		    focused = false
-		    print(focused)
-		end)
-		if focused then
 		c.MouseEnter:Connect(function()
 			Tween1:Play()
 			Tween2:Cancel()
